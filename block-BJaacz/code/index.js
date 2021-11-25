@@ -138,7 +138,7 @@ const people = [
   { name: 'Liam Smith', age: 20 },
   { name: 'Jessy Pinkman', age: 18 },
 ];
-
+ 
 const grades = [
   { name: 'John', grade: 8, sex: 'M' },
   { name: 'Sarah', grade: 12, sex: 'F' },
@@ -231,6 +231,7 @@ function isGradeB (object) {
 function isGradeC (object) {
   return object.grade <= 8 ;
 }
+
 /*
   Create a function named filterAdult which accepts:
     - an array of objects
@@ -246,15 +247,17 @@ function isGradeC (object) {
       { name: 'Liam Smith', age: 20 },
     ];
 */
-let array = [];
+
 function filterAdult (people) {
-  for(let i = 0; i < people.length ; i++) {
-    if (isAdult(people[i])) {
-      array.push(people[i]);
+  let array = [];
+  for(let i = 0; i < people.length; i++) {
+      if(isAdult(people[i])){
+      array.push(people[i])
     }
-  }
-  console.log(array);
 }
+ console.log(array)
+}
+
 /*
   Create a function named filterMale which accepts:
     - an array of objects
@@ -262,7 +265,7 @@ function filterAdult (people) {
     - while doing so use the funciton isMale you created earlier
 
   EXAMPLE:
-    console.log(filterMale(grade));
+    console.log(filterMale(grades));
 
   Output: 
     [
@@ -273,6 +276,15 @@ function filterAdult (people) {
       { name: 'Donald', grade: 5, sex: 'M' },
     ];
 */
+function filterMale (grades) {
+  let array = [];
+  for(let i = 0; i < grades.length; i++) {
+      if(isMale(grades[i])){
+      array.push(grades[i])
+    }
+  }
+ console.log(array)
+}
 
 /*
   Create a function named filterFemale which accepts:
@@ -281,7 +293,7 @@ function filterAdult (people) {
     - while doing so use the funciton isFemale you created earlier
 
   EXAMPLE:
-    cosnsole.log(filterFemale(grade));
+    cosnsole.log(filterFemale(grades));
 
   Output: 
     [
@@ -292,7 +304,15 @@ function filterAdult (people) {
       { name: 'Jane', grade: 9, sex: 'F' },
     ]
 */
-
+function filterFemale (grades) {
+  let array = [];
+  for(let i = 0; i < grades.length; i++) {
+    if(isFemale(grades[i])) {
+      array.push(grades[i])
+    }
+  }
+  console.log(array);
+}
 /*
   Create a function named filterGradeA which accepts:
     - an array of objects
@@ -309,10 +329,17 @@ function filterAdult (people) {
       { name: 'Paula', grade: 18, sex: 'F' },
       { name: 'Jennifer', grade: 13, sex: 'F' },
       { name: 'Courtney', grade: 15, sex: 'F' },
-      { name: 'Jane', grade: 9, sex: 'F' },
     ]
 */
-
+function filterGradeA (grades) {
+  let array = [];
+  for(let i = 0; i < grades.length; i++) {
+    if(isGradeA(grades[i])) {
+      array.push(grades[i])
+    }
+  }
+  console.log(array);
+}
 /*
   Create a function named filterGradeB which accepts:
     - an array of objects
@@ -320,18 +347,23 @@ function filterAdult (people) {
     - while doing so use the funciton isGradeB you created earlier
 
   EXAMPLE:
-    console.log(filterGradeB(grade));
+    console.log(filterGradeB(grades));
 
   Output: 
     [
      { name: 'Sarah', grade: 12, sex: 'F' },
-     { name: 'Johnny', grade: 2, sex: 'M' },
-     { name: 'Ethan', grade: 4, sex: 'M' },
-     { name: 'Donald', grade: 5, sex: 'M' },
      { name: 'Jane', grade: 9, sex: 'F' },
     ]
 */
-
+function filterGradeB (grades) {
+  let array = [];
+  for(let i = 0; i < grades.length; i++) {
+    if(isGradeB(grades[i])) {
+      array.push(grades[i])
+    }
+  }
+  console.log(array);
+}
 /*
   Create a function named filterGradeC which accepts:
     - an array of objects
@@ -339,7 +371,7 @@ function filterAdult (people) {
     - while doing so use the funciton isGradeC you created earlier
 
   EXAMPLE:
-    console.log(filterGradeC(grade));
+    console.log(filterGradeC(grades));
 
   Output: 
      [
@@ -349,7 +381,15 @@ function filterAdult (people) {
       { name: 'Donald', grade: 5, sex: 'M' },
     ]
 */
-
+function filterGradeC (grades) {
+  let array = [];
+  for (let i = 0; i < grades.length; i++) {
+    if(isGradeC(grades[i])) {
+      array.push(grades[i])
+    }
+  }
+  console.log(array);
+}
 /*
 We are repeating lots of code in above functions like filterGradeC, filterGradeB, filterGradeA, filterAdult. We will fix
 this by making a higher order function named filter. Now using one function filter we will be able to filter anything we want.
@@ -364,13 +404,15 @@ filter is a higher order function.
 
   EXAMPLE:
     console.log(filter(people, isAdult));
-    console.log(filter(grade, isMale));
-    console.log(filter(grade, isFemale));
-    console.log(filter(grade, isGradeA));
-    console.log(filter(grade, isGradeB));
-    console.log(filter(grade, isGradeC));
+    console.log(filter(grades, isMale));
+    console.log(filter(grades, isFemale));
+    console.log(filter(grades, isGradeA));
+    console.log(filter(grades, isGradeB));
+    console.log(filter(grades, isGradeC));
 */
-
+function filter(arr, cb) {
+  return cb(arr)
+}
 /*
   Create a function named multiplyBy which accepts:
     - a number (num)
@@ -385,7 +427,15 @@ filter is a higher order function.
 
     
     let multiplyByNine = multiplyBy(9);
-    console.log(multiplyByFive(10)); // 90
-    console.log(multiplyByFive(20)); // 180
-    console.log(multiplyByFive(5)); // 45
+    console.log(multiplyByNine(10)); // 90
+    console.log(multiplyByNine(20)); // 180
+    console.log(multiplyByNine(5)); // 45
 */
+function multiplyBy (num) {
+  return function(num2) {
+    return num * num2;
+  };
+}
+let multiplyByFive = multiplyBy(5);
+
+let multiplyByNine = multiplyBy(9);
