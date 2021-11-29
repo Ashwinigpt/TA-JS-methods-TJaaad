@@ -48,7 +48,7 @@ numbers.every((num) => (num / 3));
 
 // -  Sort Array from smallest to largest
 
-numbers.sort();
+[...numbers].sort((a, b) => a - b);
 
 // - Remove the last word in strings
 
@@ -56,9 +56,11 @@ strings.pop();
 
 // - Find largest number in numbers
 
-
+let largest = [...numbers].sort((a, b) => a - b).pop();
 
 // - Find longest string in strings
+
+let longestString = [...strings].sort((a, b) => a.length - b.length).pop();
 
 // - Find all the even numbers
 
@@ -76,7 +78,7 @@ let oddNumbers = numbers.filter(isOdd);
 
 // - Place a new word at the start of the array use (unshift)
 
-strings.unshift("Sentence");
+strings.unshift("new word");
 
 // - Make a subset of numbers array [18,9,7,11]
 
@@ -93,7 +95,7 @@ numbers.splice(3, 1, 1881);
 
 // - Replace words in strings array with the length of the word
 
-let wordsLength = strings.map(v => v.length );
+let wordsLength = strings.map((string) => string.length );
 
 // - Find the sum of the length of words using above question
 
@@ -110,22 +112,34 @@ var customers = [
 ];
 // - Find all customers whose firstname starts with 'J'
 
-customers.filter((v) => v.firstname.startsWith("J"));
+customers.filter((customer) => customer.firstname.startsWith("J"));
 
 // - Create new array with only first name
 
-let firstName = customers.map((v) => v.firstname);
+let firstName = customers.map((customer) => customer.firstname);
 console.log(firstName);
 
 // - Create new array with all the full names (ex: "Joe Blogs")
 
-let fullName = customers.map((v) => v.firstname + " " + v.lastname);
+let fullName = customers.map((customer) => customer.firstname + " " + customer.lastname);
 console.log(fullName);
 
 // - Sort the array created above alphabetically
 
-fullName.sort();
+[...fullName].sort();
 
 // - Create a new array that contains only user who has at least one vowel in the firstname.
 
-let vowel = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+let vowelCustomer = customers.filter((customer) => {
+  if(
+    customers.firstName.toLowerCase().includes("a") ||
+    customers.firstName.toLowerCase().includes("e") ||
+    customers.firstName.toLowerCase().includes("i") ||
+    customers.firstName.toLowerCase().includes("o") ||
+    customers.firstName.toLowerCase().includes("u") 
+  ){
+    return true;
+  } else {
+    return false;
+  }
+});
