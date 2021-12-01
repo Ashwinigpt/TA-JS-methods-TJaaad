@@ -13,35 +13,68 @@ let persons = [
   { name: 'Arya', grade: 14, sex: 'F' },
 ];
 
-// Create an array peopleName and store value of sex key from persons array
+// Create an array peopleName and store value of name key from persons array
+
+let peopleName = persons.map((person) => person.name);
 
 // Create an array peopleGrade and store the value of grade key from persons array
 
+let peopleGrade = persons.map((person) => person.grade);
+
 // Create an array peopleSex and store the value of sex key from persons array
+
+let peopleSex = persons.map((person) => person.sex);
 
 // Log the filtered named of people in peopleName that starts with 'J' or 'P'
 
+console.log(persons.filter((person) => person.name.startsWith("J")));
+console.log(persons.filter((person) => person.name.startsWith("P")));
+
 // Log the length of filtered named of people in peopleName that starts with 'A' and 'C'
+
+console.log(persons.filter((person) => person.name.startsWith("A")));
+console.log(persons.filter((person) => person.name.startsWith("C")));
 
 // Log all the filtered male ('M') in persons array
 
+console.log(persons.filter((person) => person.sex === "M"));
+
 // Log all the filtered female ('F') in persons array
+
+console.log(persons.filter((person) => person.sex === "F"));
 
 // Log all the filtered female ('F') whose name starts with 'C' or 'J' in persons array
 
+console.log(persons.filter((person) => person.name.startsWith("C") && person.sex === "F"));
+console.log(persons.filter((person) => person.name.startsWith("J") && person.sex === "F"));
+
 // Log all the even numbers from peopleGrade array
+
+console.log(persons.filter((person) => person.grade % 2 === 0));
 
 // Find the first name that starts with 'J' in persons array and log the object
 
+persons.filter((person) => person.name.startsWith("J"));
+
 // Find the first name that starts with 'P' in persons array and log the object
+
+persons.filter((person) => person.name.startsWith("P"));
 
 // Find the first name that starts with 'J', grade is greater than 10 and is a female
 
+console.log(persons.filter((person) => person.name.startsWith("J") && person.sex === "F" && person.grade > 10));
+
 // Filter all the female from persons array and store in femalePersons array
+
+let femalePersons = persons.filter((person) => person.sex === "F");
 
 // Filter all the male from persons array and store in malePersons array
 
+let malePersons = persons.filter((person) => person.sex === "M");
+
 // Find the sum of all grades and store in gradeTotal
+
+let gradeTotal 
 
 // Find the average grade
 
@@ -59,10 +92,20 @@ let persons = [
 
 // Sort the peopleGrade in ascending order and log the value of peopleGrade. Notice did the elements of peopleGrade got changed?
 
+peopleGrade.sort((a, b) => a - b);
+
 // Sort the peopleGrade in descending order
+
+peopleGrade.sort((a, b) => b - a);
 
 // Sort the peopleGrade in descending order this time you have to make sure you don't mutate the original array
 
+[...peopleGrade].sort((a, b) => b - a);
+
 // Sort the array peopelName in ascending `ABCD..Za....z`
 
+peopleName.sort();
+
 // Sort the array peopelName in ascending `ABCD..Za....z`. Make sure not to mutate the array
+
+[...peopleName].sort();
