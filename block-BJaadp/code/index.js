@@ -17,11 +17,29 @@ let persons = [
 
 // Find the average grade
 
+let peopleGrade = persons.map((person) => person.grade);
+let sum = peopleGrade.reduce((acc, num) => {
+  return acc + num;
+}) 
+let averageGrade = sum / peopleGrade.length;
+
 // Find the average grade of male
+
+let maleGrade = persons.filter((person) => person.sex === 'M');
+let maleAverage = maleGrade.reduce((acc, cv) => {
+  return acc + cv.grade
+}, 0) / maleGrade.length;
 
 // Find the average grade of female
 
+let femaleGrade = persons.filter((person) => person.sex === 'F');
+let femaleAverage = femaleGrade.reduce((acc, cv) => {
+  return acc + cv.grade
+}, 0) / femaleGrade.length;
+
 // Find the highest grade
+
+
 
 // Find the highest grade in male
 
@@ -130,3 +148,4 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
