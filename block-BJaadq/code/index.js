@@ -22,75 +22,45 @@ function peopleByHouses() {
 function everyone() {
   let array = [];
   got.houses.forEach((house) => {
-    for(let i = 0; i < house.people.length; i++){
-      array.push(house.people[i].name);
-    }
+    let peopleName = house.people.map((person) => person.name);
+    array = array.concat(peopleName);
   });
   return array;
 }
 
 
 function nameWithS() {
-  let sName = [];
-  got.houses.forEach((v)=>{
-    v.people.forEach((e)=>{
-        if ( e.name.includes("S") && e.name.includes("s") ){
-          sName.push(e.name)
-        }
-    })
-return sName;
-  })
+  let allPeople = everyone();
+  return allPeople.filter((name) => name.toLowerCase().includes("s"));
 }
 
 
 function nameWithA() {
-  let aName = [];
-  got.houses.forEach((v)=>{
-    v.people.forEach((e)=>{
-        if ( e.name.includes("A") && e.name.includes("a") ){
-          aName.push(e.name)
-        }
-    })
-return aName;
-  })
+  let allPeople = everyone();
+  return allPeople.filter((name) => name.toLowerCase().includes("a"));
 }
 
 
 function surnameWithS() {
-    let surnameS = [];
-    got.houses.forEach((v)=>{
-      v.people.forEach((e)=>{
-        let surName = e.name.split(" ")[1];
-        if ( surName.startsWith("S") ){
-          surnameS.push(e.name)
-        }
-      })
-    })
-    return surnameS;
-  }
+    let allPeople = everyone();
+    return allPeople.filter((name) => name.split(" ")[1].toLowerCase().includes("s"));
+}
+
 
 
 function surnameWithA() {
-  let surnameA = [];
-  got.houses.forEach((v) => {
-    v.people.forEach((e) => { 
-      let surName = e.name.split(" ")[1];
-      if (surName.startsWith("A")) {
-        surnameA.push(e.name)
-      }
-    })
-  })
-  return surnameA;
+  let allPeople = everyone();
+    return allPeople.filter((name) => name.split(" ")[1].toLowerCase().includes("a"));
 }
 
 
 function peopleNameOfAllHouses() {
   let obj = {};
   got.houses.forEach((house) => {
-   obj[house.name] = house.people.map((person) => person.name)
-    })
+    obj[house.name] = house.people.map((person) => person.name)
+  })
   return obj;
-  }
+}
 
 // Testing your result after writing your function
 console.log(countAllPeople());
