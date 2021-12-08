@@ -1,36 +1,96 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
 function countAllPeople() {
-  // your code goes here
+  let count = 0;
+  got.houses.forEach((house) => {
+    count += house.people.length
+  });
+  return count;
 }
+
 
 function peopleByHouses() {
-  // your code goes here
+  let obj = {};
+  got.houses.forEach((house) => {
+    obj[house.name] = house.people.length;
+
+  });
+  return obj;
 }
+
 
 function everyone() {
-  // your code goes here
+  let array = [];
+  got.houses.forEach((house) => {
+    for(let i = 0; i < house.people.length; i++){
+      array.push(house.people[i].name);
+    }
+  });
+  return array;
 }
+
 
 function nameWithS() {
-  // your code goes here
+  let sName = [];
+  got.houses.forEach((v)=>{
+    v.people.forEach((e)=>{
+        if ( e.name.includes("S") && e.name.includes("s") ){
+          sName.push(e.name)
+        }
+    })
+return sName;
+  })
 }
+
 
 function nameWithA() {
-  // your code goes here
+  let aName = [];
+  got.houses.forEach((v)=>{
+    v.people.forEach((e)=>{
+        if ( e.name.includes("A") && e.name.includes("a") ){
+          aName.push(e.name)
+        }
+    })
+return aName;
+  })
 }
+
 
 function surnameWithS() {
-  // your code goes here
-}
+    let surnameS = [];
+    got.houses.forEach((v)=>{
+      v.people.forEach((e)=>{
+        let surName = e.name.split(" ")[1];
+        if ( surName.startsWith("S") ){
+          surnameS.push(e.name)
+        }
+      })
+    })
+    return surnameS;
+  }
+
 
 function surnameWithA() {
-  // your code goes here
+  let surnameA = [];
+  got.houses.forEach((v) => {
+    v.people.forEach((e) => { 
+      let surName = e.name.split(" ")[1];
+      if (surName.startsWith("A")) {
+        surnameA.push(e.name)
+      }
+    })
+  })
+  return surnameA;
 }
 
+
 function peopleNameOfAllHouses() {
-  // your code goes here
-}
+  let obj = {};
+  got.houses.forEach((house) => {
+   obj[house.name] = house.people.map((person) => person.name)
+    })
+  return obj;
+  }
 
 // Testing your result after writing your function
 console.log(countAllPeople());
